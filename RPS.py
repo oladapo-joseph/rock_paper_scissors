@@ -19,7 +19,7 @@ def player(prev_play, opponent_history=[]):
             return guess
         else:
             # guess = random.choice(['R','P', 'R','S', 'R', 'P','R','P'])
-            ideal_response = {'P': 'P', 'R': 'R', 'S': 'S'}
+            ideal_response = {'P': 'S', 'R': 'P', 'S': 'R'}
             if prev_play == '':
                 guess = ideal_response[opponent_history[-2]]
                 return guess
