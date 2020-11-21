@@ -23,10 +23,16 @@ def player(prev_play, opponent_history=[]):
 
             if prev_play == '':
                 # guess = random.choice([ideal_response[opponent_history[-3]],ideal_response[opponent_history[-2]]])
-                guess = ideal_response[opponent_history[-2]]
+                guess = ideal_response[opponent_history[-3]]
                 return guess
             else:
-                guess = ideal_response[prev_play]
+                if opponent_history[-2] == '':
+                    guess = ideal_response[opponent_history[-3]]
+                elif   opponent_history[-3] == '':
+                    guess = ideal_response[opponent_history[-2]]
+                else:
+                    guess = ideal_response[prev_play]
+                    # guess = random.choice([ideal_response[opponent_history[-3]],ideal_response[opponent_history[-2]]])
                 return guess
     else:
         guess = 'P'
