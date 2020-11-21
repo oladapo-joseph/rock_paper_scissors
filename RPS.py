@@ -9,13 +9,16 @@ def player(prev_play, opponent_history=[]):
 
     if len(opponent_history) > 2:
         if opponent_history[-1] == opponent_history[-2] =='S':
-            guess = random.choice(["R", opponent_history[-3]])
+            # guess = random.choice(["R", opponent_history[-3]])
+            guess = 'R'
             return guess
         elif opponent_history[-1] == opponent_history[-2] == 'R':
-            guess = random.choice(["P",opponent_history[-3]])
+            # guess = random.choice(["P",opponent_history[-3]])
+            guess = 'P'
             return guess
         elif opponent_history[-1] == opponent_history[-2] == 'P':
-            guess = random.choice(["S", opponent_history[-3]])
+            # guess = random.choice(["S", opponent_history[-3]])
+            guess = 'S'
             return guess
         else:
             # guess = random.choice(['R','P', 'R','S', 'R', 'P','R','P'])
@@ -23,7 +26,7 @@ def player(prev_play, opponent_history=[]):
 
             if prev_play == '':
                 # guess = random.choice([ideal_response[opponent_history[-3]],ideal_response[opponent_history[-2]]])
-                guess = ideal_response[opponent_history[-3]]
+                guess = ideal_response[opponent_history[-3]] #2/3
                 return guess
             else:
                 if opponent_history[-2] == '':
@@ -32,6 +35,7 @@ def player(prev_play, opponent_history=[]):
                     guess = ideal_response[opponent_history[-2]]
                 else:
                     guess = ideal_response[prev_play]
+                    # guess = prev_play
                     # guess = random.choice([ideal_response[opponent_history[-3]],ideal_response[opponent_history[-2]]])
                 return guess
     else:
