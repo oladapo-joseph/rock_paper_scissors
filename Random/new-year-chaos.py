@@ -30,13 +30,18 @@ import sys
 # Complete the minimumBribes function below.
 def minimumBribes(q):
     sorted_list = sorted(q)
-    lis = [sorted_list.index(i)- q.index(i) for i in sorted_list if sorted_list.index(i)>q.index(i)]
-    qis = [abs(q.index(i) - sorted_list.index(i))  for i in sorted_list ]
+    lis = [sorted_list.index(i)- q.index(i) for i in q if sorted_list.index(i)<=q.index(i)]
+    qis = [(q.index(i) - sorted_list.index(i))  for i in sorted_list ]
     if max(lis) >2:
         print("Too chaotic")
     else:
-        print(sum(set(qis)))
-    print(lis, qis)
+        steps =0
+        for _ in q:
+            if (sorted_list.index(_)== q.index(_))and (q[q.index(_)+1]<_):
+                steps   = steps + 1
+        new = [x for x in qis if x>0]
+        print(sum(new)+steps)
+    print(lis, qis, steps)
 
 if __name__ == '__main__':
     n = int(input('Enter number of inputs: '))

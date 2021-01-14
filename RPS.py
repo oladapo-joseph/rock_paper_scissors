@@ -9,22 +9,18 @@ def player(prev_play, opponent_history=[]):
 
     if len(opponent_history) > 2:
         if opponent_history[-1] == opponent_history[-2]:
-            # guess = random.choice(["R", opponent_history[-3]])
             guess = ideal_response[opponent_history[-1]]
 
         else:
-            # guess = random.choice(['R','P', 'R','S', 'R', 'P','R','P'])
-            # ideal_response = {'P': 'S', 'R': 'P', 'S': 'R'}
-
             if (prev_play =='') or (opponent_history[-2] == ''):
                 guess = ideal_response[opponent_history[-3]] #2/3
-                # return guess
+
             else:
                 if   opponent_history[-3] == '':
                     guess = ideal_response[opponent_history[-2]]
                 else:
                     guess = random.choice([ideal_response[prev_play], prev_play])
-                    # guess = prev_play
+                    # guess = ideal_response[prev_play]
                     # guess = random.choice([ideal_response[opponent_history[-3]],ideal_response[opponent_history[-2]]])
                 # return guess
     else:
